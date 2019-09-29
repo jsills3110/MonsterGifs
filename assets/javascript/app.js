@@ -85,7 +85,7 @@ $("#add-a-gif").on("click", function (event) {
     console.log(input.toLowerCase());
 
     if (input === "") {
-        warnings.append("<h3>You cannot search for nothing! Try again.</h3>");
+        warnings.append("<h3>You cannot create a button with nothing! Try again.</h3>");
     } else if (monsters.indexOf(input) === -1 && searches.indexOf(input) === -1) {
         searches.push(input);
 
