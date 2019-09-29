@@ -1,0 +1,15 @@
+body {
+    background: url("../images/darkbackground.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+
+button {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 1.2rem!important;
+    opacity: 0.7;
+}
+
+h3 {
+    font-family: 'IM Fell English SC', serif;
+    color: maroon;
+}
