@@ -60,20 +60,20 @@ $(document).on("click", ".search-for-me", function () {
             gif.attr("data-still", searchResults[i].images.fixed_height_still.url);
             gif.attr("data-animate", searchResults[i].images.fixed_height.url);
             gif.attr("data-state", "still");
-            gif.addClass("gif card-img-top m-2");
+            gif.addClass("gif card-img-top mr-2 ml-2 mt-2");
             gif.attr("style", "width: auto;");
             
             var gifCardBody = $("<div>");
             gifCardBody.addClass("card-body");
 
             var favButton = $("<button>");
-            favButton.html("<i class='far fa-star' style='color: rgb(231, 233, 123)'></i>");
-            favButton.addClass("btn btn-dark add-favorite d-inline-block mr-2");
+            favButton.html("<i class='far fa-star' style='color: rgb(253, 255, 153)'></i>");
+            favButton.addClass("btn btn-secondary add-favorite d-inline-block mr-2");
 
             gifCard.append(gif);
             // gifCardBody.append("<h5 class='card-title'>Title: " + searchResults[i].title + "</h5>");
             gifCardBody.append(favButton);
-            gifCardBody.append("<p class='card-text text-light mb-3 d-inline-block'>Rating: " + searchResults[i].rating + "</p>")
+            gifCardBody.append("<p class='card-text text-light d-inline-block'>Rating: " + searchResults[i].rating + "</p>")
             gifCard.append(gifCardBody)
             gifHolder.append(gifCard);
         }
