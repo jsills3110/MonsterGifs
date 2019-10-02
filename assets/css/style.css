@@ -3,7 +3,7 @@ body {
     background-size: cover;
 }
 
-button {
+button, p {
     font-family: 'IM Fell English SC', serif;
     font-size: 1.2rem!important;
     opacity: 0.7;
