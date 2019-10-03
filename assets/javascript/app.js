@@ -92,7 +92,7 @@ $(document).on("click", ".search-for-me", function () {
             favButton.attr("data-gif-id", searchResults[i].id);
 
             // If the gif is in the favorites list...
-            if (favorites.indexOf(image.id) !== -1) {
+            if (favorites.indexOf(searchResults[i].id) !== -1) {
                     
                 // Set the star to a solid star
                 favButton.html("<i class='fas fa-star' style='color: rgb(253, 255, 153)'></i>");
@@ -193,6 +193,8 @@ $(document).on("click", ".add-favorite", function () {
             favorites.splice(favorites.indexOf(clickedFave.attr("data-gif-id")), 1);
         }
     }
+
+    localStorage.setItem("favorites", favorites);
 });
 
 // When the user clicks on Show Favorites, it will display the gifs that they have
@@ -200,6 +202,9 @@ $(document).on("click", ".add-favorite", function () {
 $(document).on("click", "#show-favorites", function () {
     warnings.empty(); // Clear the warnings div
     gifHolder.empty(); // Clear the gifHolder div
+
+    // favorites = localStorage.getItem("favorites");
+    console.log(favorites);
 
     // If the favorites list has no favorites in it...
     if (favorites.length <= 0) {
