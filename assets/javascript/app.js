@@ -194,7 +194,7 @@ $(document).on("click", ".add-favorite", function () {
         }
     }
 
-    localStorage.setItem("favorites", favorites);
+    localStorage.setItem("favorites", JSON.stringify(favorites));
 });
 
 // When the user clicks on Show Favorites, it will display the gifs that they have
@@ -203,7 +203,7 @@ $(document).on("click", "#show-favorites", function () {
     warnings.empty(); // Clear the warnings div
     gifHolder.empty(); // Clear the gifHolder div
 
-    // favorites = localStorage.getItem("favorites");
+    favorites = JSON.parse(localStorage.getItem("favorites"));
     console.log(favorites);
 
     // If the favorites list has no favorites in it...
