@@ -91,10 +91,17 @@ $(document).on("click", ".search-for-me", function () {
             favButton.attr("data-favorite", "<i class='fas fa-star' style='color: rgb(253, 255, 153)'></i>")
             favButton.attr("data-gif-id", searchResults[i].id);
 
-            if (favorites.indexOf(searchResults[i].id) !== -1) {
+            // If the gif is in the favorites list...
+            if (favorites.indexOf(image.id) !== -1) {
+                    
+                // Set the star to a solid star
                 favButton.html("<i class='fas fa-star' style='color: rgb(253, 255, 153)'></i>");
                 favButton.attr("data-state", "favorite");
+
+            // If the gif is not in the favorites list...
             } else {
+                
+                // Set the star to a star outline
                 favButton.html("<i class='far fa-star' style='color: rgb(253, 255, 153)'></i>");
                 favButton.attr("data-state", "not-favorite");
             }
@@ -186,27 +193,33 @@ $(document).on("click", ".add-favorite", function () {
             favorites.splice(favorites.indexOf(clickedFave.attr("data-gif-id")), 1);
         }
     }
-
-    console.log(favorites);
 });
 
+// When the user clicks on Show Favorites, it will display the gifs that they have
+// favorited.
 $(document).on("click", "#show-favorites", function () {
     warnings.empty(); // Clear the warnings div
     gifHolder.empty(); // Clear the gifHolder div
 
-    console.log(favorites.length);
-
+    // If the favorites list has no favorites in it...
     if (favorites.length <= 0) {
+        
+        // Warn the user that they haven't favorited anything yet.
         warnings.append("<h3>You don't have any favorites yet!</h3>");
+    
+    // If the favorites list is not empty...
     } else {
+        
+        // For each gif in the favorites list, search for it via the Giphy API
         for (var i = 0; i < favorites.length; i++) {
             var queryURL = "https://api.giphy.com/v1/gifs/" + favorites[i] + "?api_key=" + giphyAPI;
+            
             $.ajax({
                 url: queryURL,
                 method: 'GET'
             }).then(function (response) {
                 var image = response.data;
-                
+
                 // Create a Bootstrap Card.
                 var gifCard = $("<div>");
                 gifCard.addClass("card d-inline-block mr-3 mb-3");
@@ -232,10 +245,17 @@ $(document).on("click", "#show-favorites", function () {
                 favButton.attr("data-favorite", "<i class='fas fa-star' style='color: rgb(253, 255, 153)'></i>")
                 favButton.attr("data-gif-id", image.id);
 
+                // If the gif is in the favorites list...
                 if (favorites.indexOf(image.id) !== -1) {
+                    
+                    // Set the star to a solid star
                     favButton.html("<i class='fas fa-star' style='color: rgb(253, 255, 153)'></i>");
                     favButton.attr("data-state", "favorite");
+
+                // If the gif is not in the favorites list...
                 } else {
+                    
+                    // Set the star to a star outline
                     favButton.html("<i class='far fa-star' style='color: rgb(253, 255, 153)'></i>");
                     favButton.attr("data-state", "not-favorite");
                 }
@@ -251,4 +271,5 @@ $(document).on("click", "#show-favorites", function () {
     }
 });
 
+// Render the default buttons upon page load.
 renderButtons();
