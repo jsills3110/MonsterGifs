@@ -203,11 +203,8 @@ $(document).on("click", "#show-favorites", function () {
     warnings.empty(); // Clear the warnings div
     gifHolder.empty(); // Clear the gifHolder div
 
-    favorites = JSON.parse(localStorage.getItem("favorites"));
-    console.log(favorites);
-
     // If the favorites list has no favorites in it...
-    if (favorites.length <= 0) {
+    if (favorites === null || favorites.length <= 0) {
         
         // Warn the user that they haven't favorited anything yet.
         warnings.append("<h3>You don't have any favorites yet!</h3>");
@@ -215,6 +212,8 @@ $(document).on("click", "#show-favorites", function () {
     // If the favorites list is not empty...
     } else {
         
+        favorites = JSON.parse(localStorage.getItem("favorites"));
+
         // For each gif in the favorites list, search for it via the Giphy API
         for (var i = 0; i < favorites.length; i++) {
             var queryURL = "https://api.giphy.com/v1/gifs/" + favorites[i] + "?api_key=" + giphyAPI;
